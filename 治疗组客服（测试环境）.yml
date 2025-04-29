@@ -1,0 +1,674 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 治疗组客服（测试环境）
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/siliconflow:0.0.9@d0bed72582f8945dba4bf0fb23e03a449e7319f7cb0056ce02bfc76ca3f08215
+- current_identifier: null
+  type: package
+  value:
+    plugin_unique_identifier: langgenius/tongyi:0.0.16@83c2af34fbec26724422443da2f79400586f57c63a651ffab9f82c3d6b563802
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: scene-analysis
+      id: 1711528708197-source-1743345647419-target
+      source: '1711528708197'
+      sourceHandle: source
+      target: 'scene-analysis'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: scene-analysis
+        targetType: if-else
+      id: 1734438218544-source-1734486963388-target
+      source: '1734438218544'
+      sourceHandle: source
+      target: 'if-else'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: question-classifier
+      id: 1743389478186-true-1743392844995-target
+      source: '1743389478186'
+      sourceHandle: 'true'
+      target: 'question-classifier'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: answer
+      id: 1743389478186-false-1743389639856-target
+      source: '1743389478186'
+      sourceHandle: 'false'
+      target: '1743389639856'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: question-classifier
+        targetType: knowledge-retrieval
+      id: 1743392844995-1-1734438218544-target
+      source: '1743392844995'
+      sourceHandle: '1'
+      target: '1734438218544'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: question-classifier
+        targetType: llm
+      id: 1743392844995-2-1743402989670-target
+      source: '1743392844995'
+      sourceHandle: '2'
+      target: '1743402989670'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: question-classifier
+        targetType: answer
+      id: 1743392844995-1743393681557-1743393814937-target
+      source: '1743392844995'
+      sourceHandle: '1743393681557'
+      target: '1743393814937'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: question-classifier
+        targetType: answer
+      id: 1743392844995-1743393745350-1743393886125-target
+      source: '1743392844995'
+      sourceHandle: '1743393745350'
+      target: '1743393886125'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: question-classifier
+        targetType: answer
+      id: 1743392844995-1743408481902-1743408843843-target
+      source: '1743392844995'
+      sourceHandle: '1743408481902'
+      target: '1743408843843'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: if-else
+      id: 1743345647419-source-1743389478186-target
+      source: '1743345647419'
+      sourceHandle: source
+      target: '1743389478186'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: tool
+      id: 1711528708197-source-1743345647419-target
+      source: '1711528708197'
+      sourceHandle: source
+      target: '1743345647419'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: question-classifier
+        targetType: llm
+      id: 1743392844995-1744178597710-1744180679619-target
+      source: '1743392844995'
+      sourceHandle: '1744178597710'
+      target: '1744180679619'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: answer
+      id: 1744180679619--1744180761098-target
+      source: '1744180679619'
+      sourceHandle: source
+      target: '1744180761098'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: doctorName
+          max_length: 100
+          options: []
+          required: false
+          type: text-input
+          variable: doctorName
+        - label: floor
+          max_length: 48
+          options: []
+          required: false
+          type: number
+          variable: floor
+        - label: patientId
+          max_length: 48
+          options: []
+          required: false
+          type: number
+          variable: patientId
+      height: 142
+      id: '1711528708197'
+      position:
+        x: 34
+        y: 263
+      positionAbsolute:
+        x: 34
+        y: 263
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        dataset_ids:
+        - EjdyFxpPRUODDTezcfhSqTY3lfD6RcAL9Xi0YXFH+3XS/bWFRgjqbYNCX5RGUzmS
+        - 4HxfBT3psOJJUFowINrkpGe/S5mTrwxX9Uc/sIEPcZSSffZ8CiMEqhFJzCw4db4+
+        - 5ynxquDO8W86fhIFx7bPDVonj6JSIj8B8YpwD/8iJQNrC7hoNVO8EkxduKH4ZZxp
+        desc: '瑞金胰腺外科知识库'
+        multiple_retrieval_config:
+          reranking_enable: true
+          reranking_mode: reranking_model
+          reranking_model:
+            model: gte-rerank
+            provider: langgenius/tongyi/tongyi
+          score_threshold: 0.3
+          top_k: 4
+        query_variable_selector:
+        - currentMessage
+        retrieval_mode: multiple
+        selected: false
+        title: 知识库检索
+        type: knowledge-retrieval
+      height: 148
+      id: '1734438218544'
+      position:
+        x: 1550
+        y: 539
+      positionAbsolute:
+        x: 1550
+        y: 539
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1734438218544'
+          - result
+        desc: 查询知识库后答复
+        memory:
+          query_prompt_template: '{{#sys.query#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: true
+            size: 1
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Qwen/Qwen2.5-72B-Instruct
+          provider: langgenius/siliconflow/siliconflow
+        prompt_template:
+        - id: d8e70b9e-330b-4437-8313-55212c1ab349
+          role: system
+          text: "使用以下上下文作为你所学习的知识，放在<context></context> XML标签内。\n<context>\n{{#context#}}患者病史信息：{{#1743345647419.text#}}\n\
+            </context>\n当回答用户时：\n1、如果你不知道，请通过@{{#1711528708197.floor#}}楼护士台，提醒医护团队处理。\n\
+            2、不做医疗诊断和治疗方案的建议。\n3、 使用通俗易懂的语言\n4、 简洁礼貌的回答，不做过多解释\n 5、 回复字数不超过60个字。\n\
+            \ 6、切勿提示患者寻求医生帮助！\n  7、不要输出markdown格式。\n  8、需要联系工作人员处理的，请输出 @{{#1711528708197.floor#}}楼护理组\
+            \ 进行提醒。"
+        selected: false
+        title: 事务性问题LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 118
+      id: '1734486963388'
+      position:
+        x: 1854
+        y: 539
+      positionAbsolute:
+        x: 1854
+        y: 539
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1734486963388.text#}}'
+        desc: ''
+        selected: false
+        title: 事务性问题回复
+        type: answer
+        variables: []
+      height: 105
+      id: '1734486991000'
+      position:
+        x: 2158
+        y: 539
+      positionAbsolute:
+        x: 2158
+        y: 539
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        provider_id: 33bcdf7f-9bc1-48dd-9551-c96490c7a456
+        provider_name: getPatientHistory
+        provider_type: api
+        selected: false
+        title: SpecitalusegetPatientHistory_post
+        tool_configurations: {}
+        tool_label: SpecitalusegetPatientHistory_post
+        tool_name: SpecitalusegetPatientHistory_post
+        tool_parameters:
+          apiKey:
+            type: mixed
+            value: zsygzydapijk
+          patientId:
+            type: mixed
+            value: '{{#1711528708197.patientId#}}'
+          patientName:
+            type: mixed
+            value: ''
+        type: tool
+      height: 54
+      id: '1743345647419'
+      position:
+        x: 461.08631898458225
+        y: 263
+      positionAbsolute:
+        x: 461.08631898458225
+        y: 263
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: f5c03cac-b6a0-4711-ae5f-ee24bdf0ed46
+            value: 患者发送的消息，患者ID：
+            varType: string
+            variable_selector:
+            - sys
+            - query
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 126
+      id: '1743389478186'
+      position:
+        x: 942
+        y: 263
+      positionAbsolute:
+        x: 942
+        y: 263
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: ' '
+        desc: 最小化回复空值
+        selected: false
+        title: 非患者消息，不做回复
+        type: answer
+        variables: []
+      height: 114
+      id: '1743389639856'
+      position:
+        x: 1246
+        y: 387
+      positionAbsolute:
+        x: 1246
+        y: 387
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        classes:
+        - id: '1'
+          name: 事务性问题
+        - id: '2'
+          name: 医疗问题
+        - id: '1743393681557'
+          name: 其他问题
+        - id: '1743393745350'
+          name: 已经可以结束的对话
+        - id: '1743408481902'
+          name: 紧急情况
+        - id: '1744178597710'
+          name: 寒暄开场问题
+        desc: 非医疗的事务性问题，可以通过查询知识库给于确定答案来回复，涉及医疗问题，助手需提供信息帮医生生成回复草稿。
+        instruction: '你是一个问题分类器，专注于理解用户输入的问题并做好分类，便于后续的工作流配置。
+
+          1、你接收到的是一个胰腺诊疗中心患者治疗群组里的消息，你只处理胰腺疾病就医治疗过程中相关的问题，不属于该领域的问题都归类为其他问题。
+
+          2、对于不需要医生决策的就医过程中遇到的事务性问题归类事务性问题
+
+          3、需要医生给于决策和回复问题的属于医疗问题
+
+          4、基于上下文理解，对于表达理解，收到，明白，好的，谢谢，👌🏻表情符号等简短的已无实质提问内容的输入，归类为已经可以结束的对话。
+
+          5、如果消息中包含类似"大出血""抽搐""胸口疼"等紧急危险的关键词，则归类为紧急情况。
+
+          6、你好，😊表情符号之类的日常聊天的开场白归类为寒暄开场问题
+
+          7、直接进行归类，不做多余解释。'
+        instructions: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Qwen/Qwen2.5-72B-Instruct
+          provider: langgenius/siliconflow/siliconflow
+        query_variable_selector:
+        - '1711528708197'
+        - sys.query
+        selected: false
+        title: 区分是否属于医疗问题
+        topics: []
+        type: question-classifier
+        vision:
+          enabled: false
+      height: 400
+      id: '1743392844995'
+      position:
+        x: 1246
+        y: 539
+      positionAbsolute:
+        x: 1246
+        y: 539
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: 很抱歉，我不能提供这方面的信息。
+        desc: ''
+        selected: false
+        title: 其他问题回复
+        type: answer
+        variables: []
+      height: 102
+      id: '1743393814937'
+      position:
+        x: 1550
+        y: 699
+      positionAbsolute:
+        x: 1550
+        y: 699
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: ' '
+        desc: ''
+        selected: false
+        title: 结束对话回复
+        type: answer
+        variables: []
+      height: 86
+      id: '1743393886125'
+      position:
+        x: 1550
+        y: 839
+      positionAbsolute:
+        x: 1550
+        y: 839
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1743345647419'
+          - text
+        desc: 医生答复草稿生成LLM
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Qwen/Qwen2.5-72B-Instruct
+          provider: langgenius/siliconflow/siliconflow
+        prompt_template:
+        - id: 4e088cb1-e460-43e8-a9ae-82545d4c37d4
+          role: system
+          text: "你是一个专业的胰腺外科护理团队的智能助理。需要遵循以下原则：\n\n1. 角色定位：\n     - 专注于为患者提供胰腺癌相关的咨询服务\n\
+            \      - 如果问题超出知识范围，请输出一个空格。\n\n2. 知识范围：\n    - 基础医疗咨询\n     - 就医流程指导\n\
+            \     - 日常护理建议\n     - 用药安全提醒\n     - 术后康复知识\n      - 胰腺癌饮食建议\n\n3. 回答原则：\n\
+            \    - 基于患者具体情况个性化回答\n    - 使用通俗易懂的语言\n    - 简单礼貌的回答，不做过多解释\n    - 回复字数不超过60个字。\n\
+            \    - 使用空格或者回车使得回复内容美观，\n    - 不要输出markdown格式。\n    - 注意回答的安全边界\n   \
+            \ - 涉及隐私信息时谨慎处理\n    - 回答中不要包含假设性情况。\n    - 切勿提示患者寻求医生帮助！\n    - 只有回答内容里需要人工操作的，才会加上\
+            \ @{{#1711528708197.floor#}}楼护理组 进行提醒。\n    \n4. 安全边界：\n    - 不提供具体诊断意见\n\
+            \    - 不推荐具体治疗方案\n    - 不评价医生的专业判断\n     - 不讨论预后和生存期相关话题\n     - 不能给医生和护士安排工作\n\
+            \    \n\n使用以下上下文作为你所学习的知识：\n            <context>\n            {{#context#}}\n\
+            \            </context>\n\n患者的提问：{{#sys.query#}}\n\n根据用户问题的语言选择回答语言。"
+        selected: true
+        title: 医护团队答复LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 118
+      id: '1743402989670'
+      position:
+        x: 1550
+        y: 963
+      positionAbsolute:
+        x: 1550
+        y: 963
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1743402989670.text#}}'
+        desc: ''
+        selected: false
+        title: 医生草稿
+        type: answer
+        variables: []
+      height: 105
+      id: '1743403238774'
+      position:
+        x: 1854
+        y: 977.5
+      positionAbsolute:
+        x: 1854
+        y: 977.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: 根据描述您可能处于紧急情况中，请联系最近的医护人员进行处理。@{{#1711528708197.floor#}}楼护士台
+        desc: ''
+        selected: false
+        title: 紧急情况回复
+        type: answer
+        variables: []
+      height: 137
+      id: '1743408843843'
+      position:
+        x: 1550
+        y: 1129
+      positionAbsolute:
+        x: 1550
+        y: 1129
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: Qwen/Qwen2.5-7B-Instruct
+          provider: langgenius/siliconflow/siliconflow
+        prompt_template:
+        - id: 75f86963-2845-490f-a14b-54a0fd964674
+          role: system
+          text: 简洁礼貌的回复患者的提问：{{#sys.query#}},字数不要超过50个字。
+        selected: false
+        title: 寒暄答复
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1744180679619'
+      position:
+        x: 1550
+        y: 1410
+      positionAbsolute:
+        x: 1550
+        y: 1410
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1744180679619.text#}}'
+        desc: ''
+        selected: false
+        title: 寒暄答复
+        type: answer
+        variables: []
+      height: 105
+      id: '1744180761098'
+      position:
+        x: 1854
+        y: 1410
+      positionAbsolute:
+        x: 1854
+        y: 1410
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -172.64928309084507
+      y: 15.448272015111229
+      zoom: 0.469155350358499
